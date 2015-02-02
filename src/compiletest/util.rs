@@ -1,4 +1,4 @@
-// Copyright 2012 The Rust Project Developers. See the COPYRIGHT
+// Copyright 2012-2015 The Rust Project Developers. See the COPYRIGHT
 // file at the top-level directory of this distribution and at
 // http://rust-lang.org/COPYRIGHT.
 //
@@ -23,10 +23,11 @@ static OS_TABLE: &'static [(&'static str, &'static str)] = &[
     ("linux", "linux"),
     ("freebsd", "freebsd"),
     ("dragonfly", "dragonfly"),
+    ("openbsd", "openbsd"),
 ];
 
 pub fn get_os(triple: &str) -> &'static str {
-    for &(triple_os, os) in OS_TABLE.iter() {
+    for &(triple_os, os) in OS_TABLE {
         if triple.contains(triple_os) {
             return os
         }

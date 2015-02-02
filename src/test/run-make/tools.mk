@@ -60,7 +60,11 @@ else
 ifeq ($(shell uname),FreeBSD)
 	EXTRACFLAGS := -lm -lpthread -lgcc_s
 else
+ifeq ($(shell uname),OpenBSD)
+	EXTRACFLAGS := -lm -lpthread
+else
 	EXTRACFLAGS := -lm -lrt -ldl -lpthread
+endif
 endif
 endif
 endif
